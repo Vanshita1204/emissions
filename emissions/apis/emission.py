@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 import csv
-
+import os
 class EmissionView(APIView):
     class QueryParamSerializer(serializers.Serializer):
         start_date= serializers.DateField()
@@ -11,8 +11,9 @@ class EmissionView(APIView):
         buisness_facilities= serializers.ListField(child= serializers.CharField())
 
     def get(self,request):
+        breakpoint()
         serializer= self.QueryParamSerializer(data=request.GET)
         if not serializer.is_valid():
             return Response(content_type="application/json",status=HTTP_400_BAD_REQUEST, data={"errors": serializer.errors})
-        csv_reader = csv.DictReader()
+        csv_reader = csv.DictReader(f= os.getcwd()+"\\emissions_data.csv",fieldnames=["TRANSACTION DATE",'Business Facility',"CO2_ITEM"])
         
