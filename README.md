@@ -57,22 +57,18 @@ Emissions data CSV file (emissions_data.csv)
 Installation
 Clone the repository:
 
-bash
+
 git clone https://github.com/your-repo/emissions.git
 cd emissions
 Create and activate a virtual environment:
 
-bash
 python -m venv venv
 source venv/bin/activate  # For Linux/Mac
 venv\Scripts\activate     # For Windows
-Install dependencies:
 
-bash
+Install dependencies:
 pip install -r requirements.txt
+
 Place the emissions_data.csv file in the project root directory.
 
-
-
-bash
 python manage.py runserver
